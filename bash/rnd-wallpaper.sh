@@ -17,4 +17,6 @@ rndfile=$(find "${dir}" -type f -print0 | shuf -z -n 1 | tr -d '\0')
 
 [[ -n $rndfile ]] || { echo "No files found in $dir" >&2; exit 1; }
 
-exec /usr/bin/plasma-apply-wallpaperimage "${rndfile}"
+/usr/bin/kwriteconfig6 --file kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "${rndfile}" && echo "Lockscreen wallpaper set to ${rndfile}" || echo "File not found: ${rndfile}"
+/usr/bin/kwriteconfig6 --file kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image --group General --key PreviewImage "${rndfile}"
+/usr/bin/plasma-apply-wallpaperimage "${rndfile}"
