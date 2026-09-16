@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 import sys
 
+# Convert Tempaerature from Fahrenheit to Celcius and back
+# Runs from terminal with python conv_temp.py f2c fahrenheit_temp or c2f celsius_temp
+
 def f2c(fahrenheit):
 	return (fahrenheit - 32) * 5/9
 
